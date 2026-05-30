@@ -9,11 +9,14 @@ let scoreDisplay = document.querySelector('.score');
 let message = document.querySelector('.message');
 let number = document.querySelector('.number');
 let inputField = document.querySelector('input');
+let highScoreDisplay = document.querySelector('.highscore');
+let highScore = 0;
 
 console.log(`Secret number is ${secretNum}.`);
 
 check.addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
+  // const highScore = 0;
   if (guess >= 21 || guess <= 0) {
     message.textContent = 'Gotta be between 1 and 20.';
   } else {
@@ -27,11 +30,21 @@ check.addEventListener('click', function () {
         score--;
         scoreDisplay.textContent = score;
       } else if (guess === secretNum) {
-        body.style.backgroundColor = 'green';
-        message.textContent = 'You win!';
-        check.style.display = 'none';
-        number.textContent = secretNum;
-        number.style.width = '30rem';
+        if (score > highScore) {
+          body.style.backgroundColor = 'green';
+          message.textContent = 'You win - New High Score!';
+          check.style.display = 'none';
+          number.textContent = secretNum;
+          number.style.width = '30rem';
+          highScoreDisplay.textContent = score;
+          highScore = score;
+        } else {
+          body.style.backgroundColor = 'green';
+          message.textContent = 'You win!';
+          check.style.display = 'none';
+          number.textContent = secretNum;
+          number.style.width = '30rem';
+        }
       }
     } else {
       body.style.backgroundColor = 'red';
