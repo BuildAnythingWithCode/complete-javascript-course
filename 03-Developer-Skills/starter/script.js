@@ -16,19 +16,66 @@ TEST DATA 1: [17, 21, 23]
 TEST DATA 2: [12, 5, -5, 0, 4]
 */
 
-const testDataOne = [17, 21, 23];
-const testDataTwo = [12, 5, -5, 0, 4];
+// const testDataOne = [17, 21, 23];
+// const testDataTwo = [12, 5, -5, 0, 4];
 
-let runningSentence = '...';
+// let runningSentence = '...';
 
-function printForecast(arr) {
+// function printForecast(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     let eachForecast = ` ${arr[i]}C in ${i + 1} days ...`;
+//     runningSentence += eachForecast;
+//   }
+//   console.log(runningSentence);
+//   runningSentence = '...';
+// }
+
+// printForecast(testDataOne);
+// printForecast(testDataTwo);
+
+/*
+Let's say you're building a time tracking application for freelancers. At some point in building this app, you need a function that receives daily work hours for a certain week, and returns:
+1. Total hours worked
+2. Average daily hours
+3. The day with the most hours worked
+4. Number of days worked
+5. Whether the week was full-time (worked 35 hours or more)
+
+TEST DATA: [7.5, 8, 6.5, 0, 8.5, 4, 0]
+*/
+const testData = [7.5, 8, 6.5, 0, 8.5, 4, 0];
+
+const totalHoursWorked = function (arr) {
+  let accumulator = 0;
   for (let i = 0; i < arr.length; i++) {
-    let eachForecast = ` ${arr[i]}C in ${i + 1} days ...`;
-    runningSentence += eachForecast;
+    accumulator += arr[i];
   }
-  console.log(runningSentence);
-  runningSentence = '...';
-}
+  return `Work week was ${accumulator} hours in total.`;
+};
 
-printForecast(testDataOne);
-printForecast(testDataTwo);
+const avgDailyHours = function (arr) {
+  let accumulator = 0;
+  for (let i = 0; i < arr.length; i++) {
+    accumulator += arr[i];
+  }
+  return accumulator / arr.length;
+};
+
+// The day with the most hours worked
+
+const numDaysWorked = function (arr) {
+  return arr.length;
+};
+
+const checkIfWorkedFullTime = function (arr) {
+  if (totalHoursWorked >= 35) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+console.log(totalHoursWorked(testData));
+console.log(avgDailyHours(testData));
+console.log(numDaysWorked(testData));
+console.log(checkIfWorkedFullTime(testData));

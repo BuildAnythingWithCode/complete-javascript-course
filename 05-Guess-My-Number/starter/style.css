@@ -33,6 +33,10 @@ main {
   justify-content: space-around;
 }
 
+/* .check {
+  display: none;
+} */
+
 .left {
   width: 52rem;
   display: flex;
